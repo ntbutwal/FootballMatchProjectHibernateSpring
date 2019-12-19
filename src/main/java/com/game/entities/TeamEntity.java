@@ -1,15 +1,46 @@
-package com.game.dto;
+package com.game.entities;
 
 import java.util.Date;
 
-public class TeamDto {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "Team")
+public class TeamEntity {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@Column(name = "name")
 	private String name;
+
+	@Column(name = "country")
 	private String country;
+
+	@Column(name = "manager")
 	private String manager;
+
+	@Column(name = "logo")
 	private String logo;
+
+	@Column(name = "created_at")
 	private Date createdAt;
+
+	@Column(name = "updated_at")
 	private Date updatedAt;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -57,11 +88,6 @@ public class TeamDto {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-
-	@Override
-	public String toString() {
-		return "TeamDto [name=" + name + ", country=" + country + ", manager=" + manager + ", logo=" + logo + "]";
 	}
 
 }
