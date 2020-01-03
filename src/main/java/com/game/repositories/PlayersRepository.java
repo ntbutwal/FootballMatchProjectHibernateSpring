@@ -9,32 +9,21 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.game.dto.TeamDto;
-import com.game.entities.TeamEntity;
+import com.game.entities.PlayersEntity;
 
 @Repository
 @Transactional
-public class TeamRepository {
-
+public class PlayersRepository {
 	private EntityManager entityManager;
 
-	public void save(TeamEntity entity) {
-		entityManager.persist(entity);
+	public PlayersEntity save(PlayersEntity playersEntity) {
+		return entityManager.merge(playersEntity);
 
 	}
-
-	public TeamEntity senddata(TeamEntity tentity) {
-		return entityManager.merge(tentity);
-	}
-
-	public TeamEntity getbyId(Integer id) {
-		return entityManager.find(TeamEntity.class, id);
-	}
-
-	public List<TeamEntity> getAllTeam() {
-		Query query = entityManager.createQuery("from TeamEntity");
+	
+	public List<PlayersEntity> getAllPlayer(){
+		Query query= entityManager.createQuery("From PlayersEntity");
 		return query.getResultList();
-
 	}
 
 	public EntityManager getEntityManager() {
@@ -45,5 +34,6 @@ public class TeamRepository {
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
+	
 
 }
