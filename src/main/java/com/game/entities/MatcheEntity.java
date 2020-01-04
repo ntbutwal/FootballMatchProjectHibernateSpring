@@ -20,12 +20,6 @@ public class MatcheEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "Home_team_id")
-	private int homeTeamid;
-
-	@Column(name = "Away_team_id")
-	private int awayTeamid;
-
 	@Column(name = "Date")
 	private Date date;
 
@@ -46,22 +40,6 @@ public class MatcheEntity {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public int getHomeTeamid() {
-		return homeTeamid;
-	}
-
-	public void setHomeTeamid(int homeTeamid) {
-		this.homeTeamid = homeTeamid;
-	}
-
-	public int getAwayTeamid() {
-		return awayTeamid;
-	}
-
-	public void setAwayTeamid(int awayTeamid) {
-		this.awayTeamid = awayTeamid;
 	}
 
 	public Date getDate() {

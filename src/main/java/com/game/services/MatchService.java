@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.game.dto.MatchDto;
-import com.game.entities.MatchEntity;
 import com.game.entities.MatcheEntity;
 import com.game.entities.TeamEntity;
 import com.game.repositories.MatchRepository;
@@ -23,6 +22,7 @@ public class MatchService {
 	public MatchDto createMatch(MatchDto dto) {
 		TeamEntity awayteam = teamRepository.getbyId(dto.getAwayTeamId());
 		TeamEntity homeTeam = teamRepository.getbyId(dto.getHomeTeamid());
+		
 		MatcheEntity mt = new MatcheEntity();
 		mt.setAwayEntity(awayteam);
 		mt.setHomeEntity(homeTeam);
@@ -37,9 +37,7 @@ public class MatchService {
 		MatchDto mtch = null;
 		if (entity != null) {
 			mtch = new MatchDto();
-			mtch.setAwayTeamId(entity.getAwayTeamid());
-			mtch.setDate(entity.getDate());
-			mtch.setHomeTeamid(entity.getHomeTeamid());
+			mtch.setDate(new Date());
 			mtch.setLocation(entity.getLocation());
 			mtch.setId(entity.getId());
 		}
